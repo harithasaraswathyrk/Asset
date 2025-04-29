@@ -5,7 +5,7 @@ exports.showLoginForm = (req, res) => {
   exports.login = (req, res) => {
     const { email, password } = req.body;
   
-    if (email === '___' && password === '___') //replaceadmin email and password
+    if (email === '___' && password === '___') //replace admin email and password
     {
       req.session.isAdmin = true;
       return res.redirect('/');
