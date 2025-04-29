@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# Asset
-=======
+
 # 📦 Asset Management System
 
 A web-based platform to manage employees, categories, assets, and asset issuance in an organization. Built using Node.js, Express, Sequelize ORM, PostgreSQL, and Pug templating engine.
