@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  // Add padding to the content for space from the left side
+  .container.pt-5
+    h3.text-tertiary.mb-4 💻 ASSET CATEGORIES
+
+    a.btn.btn-success.mb-3(href='/categories/add') ➕ Add New Category
+
+
+  // Center the table container
+  .d-flex.justify-content-center
+    table.table.table-striped.shadow-sm.bg-white.rounded(style="width: 80%")
+      thead.table-light
+        tr
+          th Asset Name
+          th Category
+          th Assigned To
+          th Status
+          th Actions
+      tbody
+        each asset in assets
+          tr
+            td= asset.name
+            td= asset.Category ? asset.Category.name : 'N/A'
+            td= asset.Employee ? asset.Employee.name : '—'
+            td
+              span.badge(class=asset.status === 'Available' ? 'bg-success' : asset.status === 'Issued' ? 'bg-warning text-dark' : 'bg-secondary')= asset.status
+            td
+              a.btn.btn-sm.btn-warning(href=`/assets/edit/${asset.id}`) ✏️ Edit
+              if asset.status !== 'Scrapped'
+                a.btn.btn-sm.btn-danger.ms-1(href=`/assets/scrap/${asset.id}`) 🗑️ Scrap

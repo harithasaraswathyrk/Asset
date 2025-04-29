@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  // Add padding to the content for space from the left side
+  .container.pt-5
+    h3.text-tertiary.mb-4 👥 EMPLOYEE DIRECTORY
+
+    a.btn.btn-success.mb-3(href='/employees/add') ➕ Add Employee
+
+
+  // Center the table container
+  .d-flex.justify-content-center
+    table.table.table-hover.shadow-sm.bg-white.rounded(style="width: 80%")
+      thead.table-light
+        tr
+          th Name
+          th Email
+          th Status
+          th Actions
+      tbody
+        each employee in employees
+          tr
+            td= employee.name
+            td= employee.email
+            td 
+              span.badge(class=employee.status ? 'bg-success' : 'bg-secondary')= employee.status ? 'Active' : 'Inactive'
+            td
+              a.btn.btn-sm.btn-warning(href=`/employees/edit/${employee.id}`) ✏️ Edit

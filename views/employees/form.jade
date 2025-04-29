@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h2 Add Employee
+  form(action='/employees/add' method='post')
+    .mb-3
+      label.form-label Name:
+      input.form-control(type='text' name='name' required)
+    .mb-3
+      label.form-label Email:
+      input.form-control(type='email' name='email' required)
+    .form-check
+      input.form-check-input(type='checkbox' name='status' checked)
+      label.form-check-label Active
+    button.btn.btn-primary(type='submit') Add

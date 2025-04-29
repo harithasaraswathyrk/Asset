@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  h1 Issue Asset
+
+  form(action="/issues/add" method="POST")
+    .mb-3
+      label Employee:
+      select(name="employeeId" required)
+        option(value="") -- Select Employee --
+        each employee in employees
+          option(value=employee.id)= employee.name
+
+    .mb-3
+      label Asset:
+      select(name="assetId" required)
+        option(value="") -- Select Asset --
+        each asset in assets
+          option(value=asset.id)= asset.name
+
+    .mb-3
+      label Issue Date:
+      input(type="date" name="issueDate" required)
+
+    button(type="submit") Issue

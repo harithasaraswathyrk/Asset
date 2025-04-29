@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  .hero-header.text-center.py-4.mb-5
+    h1.display-5.text-gradient Welcome!  
+      span.fw-bold Asset Management System 
+
+
+  // Responsive Tiles Section
+  .container
+    .row.g-4.text-center
+      .col-12.col-sm-6.col-md-3
+        a(href="/employees", class="btn btn-tile text-primary w-100 shadow-sm py-3") 👥 Employees
+      .col-12.col-sm-6.col-md-3
+        a(href="/categories", class="btn btn-tile text-secondary w-100 shadow-sm py-3") 📦 Categories
+      .col-12.col-sm-6.col-md-3
+        a(href="/assets", class="btn btn-tile text-success w-100 shadow-sm py-3") 💻 Assets
+      .col-12.col-sm-6.col-md-3
+        a(href="/issues/list", class="btn btn-tile text-warning w-100 shadow-sm py-3") 🔄 Issued
+
+  // Stock Summary Table
+  .container.mt-5
+    h4.text-secondary.mb-3.text-center Stock Summary by Category
+
+    .table-responsive
+      table.table.table-bordered.table-striped.shadow-sm.bg-white.rounded
+        thead.table-light.text-center
+          tr
+            th Category
+            th Total
+            th Available
+            th Issued
+            th Scrapped
+        tbody.text-center
+          each row in categorySummary
+            tr
+              td= row.name
+              td= row.total
+              td= row.available
+              td= row.issued
+              td= row.scrapped
+        tfoot
+          tr.table-info.text-center.fw-bold
+            td Total
+            td= totalAssets
+            td= availableAssets
+            td= issuedAssets
+            td= scrappedAssets

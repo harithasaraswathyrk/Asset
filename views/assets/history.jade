@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  h2 Asset History (Asset ID: #{assetId})
+  table.table.table-striped
+    thead
+      tr
+        th Action
+        th Notes
+        th Date
+    tbody
+      each record in history
+        tr
+          td= record.action
+          td= record.notes
+          td= record.createdAt.toLocaleString()

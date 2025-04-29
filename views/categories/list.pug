@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  // Add padding to the content for space from the left side
+  .container.pt-5
+    h3.text-tertiary.mb-4 📦 CATEGORIES
+
+    a.btn.btn-success.mb-3(href='/categories/add') ➕ Add New Category
+
+  // Center the table container
+  .d-flex.justify-content-center
+    table.table.table-hover.shadow-sm.bg-white(style="width: 80%; border-radius: 0.25rem;")
+      thead.table-light
+        tr
+          th.text-center Category
+          th.text-center Total Quantity
+          th.text-center Issued Quantity
+          th.text-center Balance
+          th.text-center Actions
+      tbody
+        each category in categories
+          tr
+            td.text-center= category.name
+            td.text-center= category.totalQuantity
+            td.text-center= category.issuedQuantity
+            td.text-center= category.totalQuantity - category.issuedQuantity
+            td.text-center
+              a.btn.btn-sm.btn-warning(href=`/categories/edit/${category.id}`) ✏️ Edit

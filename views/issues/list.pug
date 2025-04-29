@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  // Add padding to the content for space from the left side
+  .container.pt-5
+    h3.text-tertiary.mb-4 🔄 ISSUED ASSETS
+
+  // Center the table container
+  .d-flex.justify-content-center
+    table.table.table-striped.shadow-sm.bg-white.rounded(style="width: 80%")
+      thead.table-light
+        tr
+          th Asset
+          th Employee
+          th Issue Date
+          th Status
+          th Actions
+      tbody
+        each issue in issues
+          tr
+            td= issue.Asset ? issue.Asset.name : 'N/A'
+            td= issue.Employee ? issue.Employee.name : 'N/A'
+            td= issue.issueDate
+            td
+              span.badge(class=issue.status === 'Issued' ? 'bg-warning text-dark' : 'bg-success')= issue.status
+            td
+              if issue.status === 'Issued'
+                a.btn.btn-sm.btn-danger(href=`/issues/return/${issue.id}`) 🔁 Return
+              else
+                span.text-muted Returned

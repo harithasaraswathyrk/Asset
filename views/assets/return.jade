@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h2 Return Asset
+  form(action='/assets/return' method='post')
+    .mb-3
+      label.form-label Select Asset:
+      select.form-select(name='assetId' required)
+        each asset in issuedAssets
+          option(value=asset.id) #{asset.name} (#{asset.serialNumber}) - #{asset.Employee.name}
+    .mb-3
+      label.form-label Return Reason:
+      input.form-control(type='text' name='reason' required)
+    button.btn.btn-warning(type='submit') Return

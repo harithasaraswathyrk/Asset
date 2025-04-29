@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  h2 Employees
+  a(href='/employees/add' class='btn btn-primary mb-3') Add Employee
+  form(method='get')
+    input(type='text' name='search' placeholder='Search by name')
+    select(name='status')
+      option(value='') All
+      option(value='active') Active
+      option(value='inactive') Inactive
+    button(type='submit' class='btn btn-secondary ms-2') Filter
+  table#employeeTable.table.table-striped
+    thead
+      tr
+        th Name
+        th Email
+        th Status
+    tbody
+      each employee in employees
+        tr
+          td= employee.name
+          td= employee.email
+          td= employee.status ? 'Active' : 'Inactive'
+
+script.
+  $(document).ready(function() {
+    $('#employeeTable').DataTable();
+  });

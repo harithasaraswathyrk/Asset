@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h2.text-primary.mb-4 #{category ? 'Edit Category' : 'Add New Category'}
+
+  form(method='POST', action=category ? `/categories/edit/${category.id}` : '/categories/add', class='bg-white p-4 rounded shadow-sm')
+    .mb-3
+      label.form-label(for='name') Category Name
+      input.form-control(type='text', name='name', id='name', required, value=category ? category.name : '')
+
+    .mb-3
+      label.form-label(for='totalQuantity') Total Quantity
+      input.form-control(type='number', name='totalQuantity', id='totalQuantity', min='0', required, value=category ? category.totalQuantity : '')
+
+    button.btn.btn-primary(type='submit') 💾 Save

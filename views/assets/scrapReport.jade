@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  h2 Scrapped Assets
+  table.table.table-striped
+    thead
+      tr
+        th Name
+        th Serial Number
+        th Branch
+        th Price
+    tbody
+      each asset in scrappedAssets
+        tr
+          td= asset.name
+          td= asset.serialNumber
+          td= asset.branch
+          td= asset.price

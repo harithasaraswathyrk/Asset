@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  h2.text-primary.mb-4 #{asset ? 'Edit Asset' : 'Add New Asset'}
+
+  form(action=asset ? `/assets/edit/${asset.id}` : '/assets/add', method='POST', class='bg-white p-4 rounded shadow-sm')
+    .mb-3
+      label.form-label Asset Name:
+      input.form-control(type='text', name='name', value=asset ? asset.name : '', required)
+
+    .mb-3
+      label.form-label Category:
+      select.form-select(name='categoryId', required)
+        option(value='') -- Select Category --
+        each category in categories
+          option(value=category.id selected=asset && asset.CategoryId == category.id)= category.name
+
+    .mb-3
+      label.form-label Assign To Employee:
+      select.form-select(name='employeeId')
+        option(value='') -- Not Assigned --
+        each employee in employees
+          option(value=employee.id selected=asset && asset.EmployeeId == employee.id)= employee.name
+
+    button.btn.btn-primary.mt-2(type='submit') 💾 Save

@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  h2 Issue Asset
+  form(action='/assets/issue' method='post')
+    .mb-3
+      label.form-label Select Asset:
+      select.form-select(name='assetId' required)
+        each asset in availableAssets
+          option(value=asset.id) #{asset.name} (#{asset.serialNumber})
+    .mb-3
+      label.form-label Select Employee:
+      select.form-select(name='employeeId' required)
+        each employee in employees
+          option(value=employee.id) #{employee.name}
+    button.btn.btn-success(type='submit') Issue

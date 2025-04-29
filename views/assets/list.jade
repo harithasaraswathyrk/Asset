@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  h2 Assets
+  a(href='/assets/issue' class='btn btn-success mb-3') Issue Asset
+  a(href='/assets/return' class='btn btn-warning mb-3') Return Asset
+  a(href='/assets/scrap-report' class='btn btn-danger mb-3') Scrapped Assets
+  a(href='/assets/stock-view' class='btn btn-info mb-3') Stock View
+  table#assetTable.table.table-striped
+    thead
+      tr
+        th Name
+        th Serial Number
+        th Branch
+        th Price
+        th Status
+        th Actions
+    tbody
+      each asset in assets
+        tr
+          td= asset.name
+          td= asset.serialNumber
+          td= asset.branch
+          td= asset.price
+          td= asset.scrapped ? 'Scrapped' : (asset.assignedTo ? 'Assigned' : 'Available')
+          td
+            if !asset.scrapped
+              form(action='/assets/scrap' method='post')
+                input(type='hidden' name='assetId' value=asset.id)
+                button.btn.btn-danger(type='submit') Scrap
+            a(href=`/assets/history/${asset.id}` class='btn btn-secondary ms-2') View History
+
+script.
+  $(document).ready(function() {
+    $('#assetTable').DataTable();
+  });

@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  // Add padding to the content for space from the left side
+  .container.pt-5
+    h3.text-tertiary.mb-4 📈 STOCK VIEW
+
+    p.text-muted.mb-4 A bird’s eye view of all asset categories and their current status.
+
+    // Center align the table
+    .d-flex.justify-content-center
+      table.table.table-striped.shadow-sm.bg-white.rounded(style="width: 80%;")
+        thead.table-light
+          tr
+            th Category
+            th Total Assets
+            th Available
+            th Issued
+            th Scrapped
+        tbody
+          each row in categorySummary
+            tr
+              td= row.name
+              td= row.total
+              td= row.available
+              td= row.issued
+              td= row.scrapped
+
+        tfoot
+          tr.table-info.fw-bold
+            td Total
+            td= totalAssets
+            td= availableAssets
+            td= issuedAssets
+            td= scrappedAssets

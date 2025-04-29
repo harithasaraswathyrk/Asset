@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  h2 Stock View
+  table.table.table-striped
+    thead
+      tr
+        th Branch
+        th Total Assets
+        th Total Value
+    tbody
+      each item in stock
+        tr
+          td= item.branch
+          td= item.dataValues.totalAssets
+          td= item.dataValues.totalValue

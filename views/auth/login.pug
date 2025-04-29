@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  .container.mt-5
+    h2.text-center.text-primary.mb-4 Admin Login
+
+    if error
+      .alert.alert-danger= error
+
+    form(action='/login' method='POST' class='mx-auto p-4 shadow-sm bg-white rounded' style='max-width:400px')
+      .mb-3
+        label.form-label Email
+        input.form-control(type='email', name='email', required)
+
+      .mb-3
+        label.form-label Password
+        input.form-control(type='password', name='password', required)
+
+      button.btn.btn-primary.w-100(type='submit') Login

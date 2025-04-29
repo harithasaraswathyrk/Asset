@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h2.mb-4.text-primary #{employee ? 'Edit Employee' : 'Add New Employee'}
+
+  form(action=employee ? `/employees/edit/${employee.id}` : '/employees/add', method='POST', class='bg-white p-4 rounded shadow-sm')
+    .mb-3
+      label.form-label Name:
+      input.form-control(type='text', name='name', required, value=employee ? employee.name : '')
+
+    .mb-3
+      label.form-label Email:
+      input.form-control(type='email', name='email', required, value=employee ? employee.email : '')
+
+    .form-check.form-switch.mb-3
+      input.form-check-input(type='checkbox', name='status', id='status', checked=employee && employee.status)
+      label.form-check-label(for='status') Active
+
+    button.btn.btn-primary(type='submit') 💾 Save
