@@ -36,13 +36,6 @@ A web-based platform to manage employees, categories, assets, and asset issuance
 
 ---
 
-## 🧑‍💻 Admin Credentials
-
-Email: adminhari@gmail.com  
-Password: Hari@123
-
----
-
 ## 🛠️ Setup Instructions
 
 ### 1. Clone the repository
