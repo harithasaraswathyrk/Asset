@@ -125,4 +125,10 @@ http://localhost:3000
 - Sequelize ORM
 - Pug (Jade)
 - Bootstrap
->>>>>>> 34791b6 (Initial commit)
+
+---
+
+## 📫 Contact
+
+- **LinkedIn:** [Haritha Saraswathy](https://www.linkedin.com/in/haritha-saraswathy-36168229b)  
+- **Email:** [harithasaraswathy01@gmail.com](mailto:harithasaraswathy01@gmail.com)
